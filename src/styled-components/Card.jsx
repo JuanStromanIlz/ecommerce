@@ -82,7 +82,8 @@ const Producto = styled.article`
       transition: .8s;
       position: absolute;
       inset: 0;
-      background-image: url(${props => props.img}); 
+      ${'' /* background-image: url(${props => props.img});  */}
+      background-color: ${props => props.theme.grey};
       background-position: center center;
       background-repeat: no-repeat;
       overflow: hidden;
@@ -187,7 +188,7 @@ function Card({info, viewDetail}) {
     <InView as='div' triggerOnce={true} threshold={.3} onChange={inView => setBackground(inView)}>
       <Producto ref={cardRef} color={card.color} img={card.img}>
         <div className={`imgContainer ${card.product_quantity === 0 ? 'disableImg' : null}`}>
-          <Link className='link' to={`/${card.name}`}>
+          <Link className='link' to={`/books/${card.name}`}>
             <div className='imageShow'></div>
           </Link>
           {card.product_quantity === 0 ?
@@ -208,7 +209,7 @@ function Card({info, viewDetail}) {
           <Link className='link' to={`/collections/${card.collection}`}>
             <span className='collection'>{card.collection}</span>
           </Link>
-          <Link className='link' to={`/${card.name}`}>
+          <Link className='link' to={`/books/${card.name}`}>
             <span className='title'>{card.name}</span>
           </Link>
           <Link className='link' to={`/authors/${card.author}`}>

@@ -14,6 +14,7 @@ const List = styled.section`
   .listWrapper {
     box-sizing: border-box;
     display: grid;
+    padding: .8rem;
     grid-template-columns: repeat(2, 50%);
     > div:nth-child(2n) article {
       transition-delay: .2s !important;

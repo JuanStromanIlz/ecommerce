@@ -2,11 +2,13 @@ import styled from 'styled-components';
 import Nav from './Navbar';
 import {Cart, CartButton} from './Cart';
 import Menu from './Menu';
+import Footer from './Footer';
 
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 100%);
   #pageContent {
+    margin-bottom: 60px;
     video {
       display: none;
       height: 100vh;
@@ -23,6 +25,7 @@ const Wrapper = styled.div`
       display: none;
     }
     #pageContent {
+      margin-bottom: 0;
       grid-column: menuEnd / contentEnd;
       video {
         display: block;
@@ -40,6 +43,7 @@ function PageWrapper({children}) {
       <CartButton />
       <div id='pageContent'>
         {children}
+        <Footer />
       </div>
     </Wrapper>
   );

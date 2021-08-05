@@ -8,6 +8,7 @@ import UserContext from './context/UserContext';
 import AuthorView from './views/AuthorView';
 import CollectionView from './views/CollectionView';
 import HomeView from './views/HomeView';
+import ItemView from './views/ItemView';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route exact path='/' component={HomeView}/>
             <Route path='/collections/:title' component={CollectionView} />
             <Route path='/authors/:author' component={AuthorView} />
+            <Route path='/books/:book' component={ItemView} />
           </Switch>
         </Router>
       </UserContext>
