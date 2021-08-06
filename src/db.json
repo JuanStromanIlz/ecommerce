@@ -7,8 +7,7 @@
     "collection": "Futuros Proximos",
     "description": "Si bien el principio que organiza los escritos reunidos de Mark Fisher no es cronológico, este tercer volumen refleja de manera fiel  aquellas problemáticas que lo desvelaron los últimos años de su vida. En varias de las entrevistas seleccionadas para este libro, así como en sus numerosas intervenciones online entre las que destacan escritos como “Spinoza, k-punk, neuropunk”, “Bueno para nada” o el audaz, y en su momento muy debatido, “Salir del Castillo de Vampiros”, Fisher confrontaba una vez más con el purismo paralizante de la izquierda. Solo que en esta oportunidad su foco está puesto fundamentalmente en cómo las redes sociales, con sus ejércitos de trolls tóxicos y moralismo de caza de brujas, amplifican nuestros peores impulsos, incentivando por medio de algoritmos la indignación rápida y desmantelando casi por completo todo sentido de camaradería, conciencia de clase y solidaridad. Un fenómeno que, por supuesto, no ha dejado de crecer y que demuestra cuán efectivas son las tecnologías sociales del capitalismo comunicativo a la hora de exacerbar ciertas pulsiones y bloquear otras.",
     "img": "https://w4w7a3s7.stackpathcdn.com/wp-content/uploads/2021/06/FISHER-K-punk_03_FP_TAPA.jpg",
-    "price": 1150,
-    "color": "#E93641"
+    "price": 1150
   },
   { 
     "product_id": 2,
@@ -18,8 +17,7 @@
     "collection": "Futuros Proximos",
     "description": "«Lauren Berlant es una de las más importantes y originales críticas de la lógica de la cultura contemporánea. Aquí ella ofrece un punto de vista novedoso sobre procesos de la vida cotidiana que nos resultan familiares, a través de su sutil pero audaz lectura del optimismo cruel, esa dinámica psíquica y estructural que mantiene a las personas cerca de objetos, fantasías y mundos que en verdad las debilitan.» ",
     "img": "https://w4w7a3s7.stackpathcdn.com/wp-content/uploads/2020/06/31_Optimismo-Cruel_FP-tapa-alta.jpg",
-    "price": 1300,
-    "color": "#AECD72"
+    "price": 1300
   },
   { 
     "product_id": 3,
@@ -29,8 +27,7 @@
     "collection": "Synesthesia",
     "description": "«Lauren Berlant es una de las más importantes y originales críticas de la lógica de la cultura contemporánea. Aquí ella ofrece un punto de vista novedoso sobre procesos de la vida cotidiana que nos resultan familiares, a través de su sutil pero audaz lectura del optimismo cruel, esa dinámica psíquica y estructural que mantiene a las personas cerca de objetos, fantasías y mundos que en verdad las debilitan.» ",
     "img": "https://w4w7a3s7.stackpathcdn.com/wp-content/uploads/2021/05/WOJNAROWICKZ_CN-tapa-180x270.jpg",
-    "price": 1300,
-    "color": "#AECD72"
+    "price": 1300
   },
   { 
     "product_id": 4,
@@ -40,51 +37,6 @@
     "collection": "Synesthesia",
     "description": "«Lauren Berlant es una de las más importantes y originales críticas de la lógica de la cultura contemporánea. Aquí ella ofrece un punto de vista novedoso sobre procesos de la vida cotidiana que nos resultan familiares, a través de su sutil pero audaz lectura del optimismo cruel, esa dinámica psíquica y estructural que mantiene a las personas cerca de objetos, fantasías y mundos que en verdad las debilitan.» ",
     "img": "https://w4w7a3s7.stackpathcdn.com/wp-content/uploads/2020/12/La-Biblia-Psiquika-Tapa-Alta-180x270.jpg",
-    "price": 1300,
-    "color": "#080808"
-  },
-  { 
-    "product_id": 1,
-    "product_quantity": 3,
-    "name": "K-PUNK - VOLUMEN 3",
-    "author": "Mark Fisher",
-    "collection": "Futuros Proximos",
-    "description": "Si bien el principio que organiza los escritos reunidos de Mark Fisher no es cronológico, este tercer volumen refleja de manera fiel  aquellas problemáticas que lo desvelaron los últimos años de su vida. En varias de las entrevistas seleccionadas para este libro, así como en sus numerosas intervenciones online entre las que destacan escritos como “Spinoza, k-punk, neuropunk”, “Bueno para nada” o el audaz, y en su momento muy debatido, “Salir del Castillo de Vampiros”, Fisher confrontaba una vez más con el purismo paralizante de la izquierda. Solo que en esta oportunidad su foco está puesto fundamentalmente en cómo las redes sociales, con sus ejércitos de trolls tóxicos y moralismo de caza de brujas, amplifican nuestros peores impulsos, incentivando por medio de algoritmos la indignación rápida y desmantelando casi por completo todo sentido de camaradería, conciencia de clase y solidaridad. Un fenómeno que, por supuesto, no ha dejado de crecer y que demuestra cuán efectivas son las tecnologías sociales del capitalismo comunicativo a la hora de exacerbar ciertas pulsiones y bloquear otras.",
-    "img": "https://w4w7a3s7.stackpathcdn.com/wp-content/uploads/2021/06/FISHER-K-punk_03_FP_TAPA.jpg",
-    "price": 1150,
-    "color": "#E93641"
-  },
-  { 
-    "product_id": 2,
-    "product_quantity": 0,
-    "name": "El optimismo cruel",
-    "author": "Lauren Berlant",
-    "collection": "Futuros Proximos",
-    "description": "«Lauren Berlant es una de las más importantes y originales críticas de la lógica de la cultura contemporánea. Aquí ella ofrece un punto de vista novedoso sobre procesos de la vida cotidiana que nos resultan familiares, a través de su sutil pero audaz lectura del optimismo cruel, esa dinámica psíquica y estructural que mantiene a las personas cerca de objetos, fantasías y mundos que en verdad las debilitan.» ",
-    "img": "https://w4w7a3s7.stackpathcdn.com/wp-content/uploads/2020/06/31_Optimismo-Cruel_FP-tapa-alta.jpg",
-    "price": 1300,
-    "color": "#AECD72"
-  },
-  { 
-    "product_id": 3,
-    "product_quantity": 3,
-    "name": "EN LA SOMBRA DEL SUEÑO AMERICANO",
-    "author": "David Wojnarowicz",
-    "collection": "Synesthesia",
-    "description": "«Lauren Berlant es una de las más importantes y originales críticas de la lógica de la cultura contemporánea. Aquí ella ofrece un punto de vista novedoso sobre procesos de la vida cotidiana que nos resultan familiares, a través de su sutil pero audaz lectura del optimismo cruel, esa dinámica psíquica y estructural que mantiene a las personas cerca de objetos, fantasías y mundos que en verdad las debilitan.» ",
-    "img": "https://w4w7a3s7.stackpathcdn.com/wp-content/uploads/2021/05/WOJNAROWICKZ_CN-tapa-180x270.jpg",
-    "price": 1300,
-    "color": "#AECD72"
-  },
-  { 
-    "product_id": 4,
-    "product_quantity": 3,
-    "name": "LA BIBLIA PSÍQUIKA Genesis",
-    "author": "Breyer P-Orridge",
-    "collection": "Synesthesia",
-    "description": "«Lauren Berlant es una de las más importantes y originales críticas de la lógica de la cultura contemporánea. Aquí ella ofrece un punto de vista novedoso sobre procesos de la vida cotidiana que nos resultan familiares, a través de su sutil pero audaz lectura del optimismo cruel, esa dinámica psíquica y estructural que mantiene a las personas cerca de objetos, fantasías y mundos que en verdad las debilitan.» ",
-    "img": "https://w4w7a3s7.stackpathcdn.com/wp-content/uploads/2020/12/La-Biblia-Psiquika-Tapa-Alta-180x270.jpg",
-    "price": 1300,
-    "color": "#080808"
+    "price": 1300
   }
 ]

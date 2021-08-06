@@ -5,38 +5,15 @@ import styled from 'styled-components';
 const CartComponent = styled.div`
   position: fixed;
   transform: translateY(100%);
-  transition: .8s;
-  bottom: 0;
+  transition: .4s;
+  bottom: 60px;
   right: 0;
   left: 0;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  z-index: 8;
   .cartWrapper {
-    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 20%);
     background: white;
     overflow: hidden;
-    .closeTab {
-      position: sticky;
-      top: 0;
-      right: 0;
-      left: 0;
-      background: white;
-      padding: 1.6rem;
-      padding-bottom: 0;
-      display: flex;
-      justify-content: flex-end;
-      button {
-        border: inherit;
-        background: inherit;
-        padding: 0;
-        span {
-          font-size: 2.8rem;
-          color: ${props => props.theme.black};
-        }
-      }
-    }
+    box-sizing: border-box;
     .checkout {
       .checkoutWrapper {
         position: relative;
@@ -48,15 +25,14 @@ const CartComponent = styled.div`
           top: 0;
           width: 100%;
           padding: 1.2rem;
-          font-weight: bold;
           letter-spacing: 2.2px;
-          text-transform: capitalize;
+          text-transform: uppercase;
           border: inherit;
           background: ${props => props.theme.black};
           margin: 0;
           text-align: center;
           color: white;
-          font-size: 1.8rem;
+          font-size: 1.4rem;
         }
       }
     }
@@ -126,14 +102,11 @@ const CartComponent = styled.div`
   }
   @media (min-width: 920px) {
     display: inherit;
-    width: 250px;
-    top: 7rem;
-    left: auto;
-    bottom: auto;
-    transform: translateX(200%);
-    .closeTab {
-      display: none !important;
-    }
+    width: 20vw;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    transform: translateY(0);
     .checkoutWrapper {
       height: 44px !important;
       margin: 1.6rem !important;
@@ -145,32 +118,17 @@ const CartComponent = styled.div`
       height: 16px !important;
     }
     .cartList {
-      max-height: 300px !important;
+      max-height: calc(100vh - 72px) !important;
     }
   }
 `;
 
 function Cart() {
-  const {cart, removeItem} = useContext(UserCont);
-
-  function closeCart() {
-    document.body.removeAttribute('style');
-    document.getElementById('mask').removeAttribute('style');
-    document.getElementById('cart').removeAttribute('style');
-  }
-
-  function deleteitem(index) {
-    removeItem(index);
-  }
+  const {cart, removeItem, checkout} = useContext(UserCont);
 
   return (
     <CartComponent id='cart'>
       <div className='cartWrapper'>
-        <div className='closeTab'>
-          <button onClick={closeCart}>
-            <span class="material-icons">close</span>
-          </button>
-        </div>
         <div className='cartList'>
           {cart.length !== 0 ? 
             cart.map((item, index) => 
@@ -184,7 +142,7 @@ function Cart() {
                   <span className='author'>{item.author}</span>
                   <span className='quantityPrice'>{`${item.quantity} x ${item.price}`}</span>
                 </div>
-                <div className='itemDelete' onClick={() => deleteitem(index)}>
+                <div className='itemDelete' onClick={() => removeItem(index)}>
                   <img src={process.env.PUBLIC_URL + '/icons/delete.svg'} alt='delete'></img>
                 </div>
               </div>
@@ -194,7 +152,7 @@ function Cart() {
         {cart.length !== 0 ? 
           <div className='checkout'>
             <div className='checkoutWrapper'>
-              <button>checkout</button>
+              <button onClick={checkout}>checkout</button>
             </div>
           </div>
         : null}
@@ -203,81 +161,4 @@ function Cart() {
   );
 }
 
-const Button = styled.div`
-  position: fixed;
-  cursor: pointer;
-  z-index: 11;
-  top: 1.6rem;
-  right: 1.6rem;
-  display: none;
-  background: ${props => props.theme.black};
-  box-shadow: 0 .4rem 1.2rem 0 rgb(0 0 0 / 10%);
-  border-radius: 25px;
-  padding: 1rem 1.6rem;
-  span {
-    color: white;
-    display: block;
-    margin: auto 0;
-    padding-right: 1rem;
-    text-transform: uppercase;
-    font-size: 1.4rem;
-  }
-  img {
-    display: block;
-    margin: auto;
-  }
-  .itemsInCart {
-    color: #fff;
-    position: absolute;
-    right: -5%;
-    top: -5%;
-    font-size: 1.4rem;
-    aspect-ratio: 1;
-    background: ${props => props.theme.red};
-    width: 1.8rem;
-    padding: .3rem;
-    border-radius: 25px;
-    text-align: center;
-  }
-  @media (min-width: 920px) {
-    display: flex;
-  }
-`;
-
-function CartButton() {
-  const {cart} = useContext(UserCont);
-  const [open, setOpen] = useState(false);
-
-  function openCart() {
-    if (!open) {
-      if (window.innerWidth >= 920) {
-        document.getElementById('mask').removeAttribute('style');
-        document.getElementById('productDetail').removeAttribute('style');
-        document.getElementById('cart').style.cssText='transform: translateY(0); right: 1.6rem;';
-        setOpen(!open);
-      } else {
-        document.getElementById('productDetail').removeAttribute('style');
-        document.getElementById('mask').style.cssText='opacity: .6; bottom: 0;';
-        document.getElementById('cart').style.cssText='transform: translateY(0); right: 1.6rem;';
-        setOpen(!open);
-      }
-    } else {
-      document.body.removeAttribute('style');
-      document.getElementById('mask').removeAttribute('style');
-      document.getElementById('cart').removeAttribute('style');
-      setOpen(!open);
-    }
-  }
-
-  return (
-    <Button onClick={openCart}>
-      <span>Carrito</span>
-      {cart.length > 0 ? 
-        <span className='itemsInCart'>{cart.length}</span>
-      : null}
-      <img src={process.env.PUBLIC_URL + '/icons/bag.svg'} alt='bag'></img>
-    </Button>
-  );
-}
-
-export {Cart, CartButton};
+export default Cart;

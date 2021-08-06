@@ -247,7 +247,7 @@ function Detail({product}) {
       <div className='detailWrapper'>
         <div className='closeTab'>
           <button onClick={closeDetail}>
-            <span class='material-icons'>close</span>
+            <span className='material-icons'>close</span>
           </button>
         </div>
         <div className='detalleInfo'>
@@ -269,7 +269,7 @@ function Detail({product}) {
                 <button onClick={quantityRest}>
                   <span className={`material-icons ${quantity === 1 && 'buttonDisable'}`}>remove</span>
                 </button>
-                <input type='number' value={quantity} readonly={true}></input>
+                <input type='number' value={quantity} readOnly={true}></input>
                 <button onClick={quantityAdd}>
                   <span className={`material-icons ${card.product_quantity === quantity && 'buttonDisable'}`}>add</span>
                 </button>

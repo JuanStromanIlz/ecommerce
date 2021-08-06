@@ -44,31 +44,41 @@ const Producto = styled.article`
     font-size: inherit;
     background: transparent;
     .buttonWrapper {
+      transition: .2s;
       position: relative;
       display: flex;
       flex-direction: row;
       overflow: hidden;
-      height: 45px;
+      height: 35px;
       width: 80%;
       margin: 0 auto;
-      background: ${props => props.theme.black};
+      background: transparent;
       > div {
         width: 100%;
-        transition: all 0.3s;
+        transition: all .3s;
         color: white;
-        font-size: 1.4rem;
         text-transform: uppercase;
         display: flex;
-        background: ${props => props.theme.black};
         span {
           margin: auto;
         }
       }
       > div:first-child {
+        background: transparent;
+        opacity: 0;
         position: absolute;
         left: -100%;
         top: 0;
         bottom: 0;
+      }
+      > div:last-child {
+        background: white;
+        border: 2px solid ${props => props.theme.black};
+        img {
+          display: block;
+          margin: auto;
+          height: 20px;
+        }
       }
     }
   }
@@ -82,8 +92,7 @@ const Producto = styled.article`
       transition: .8s;
       position: absolute;
       inset: 0;
-      ${'' /* background-image: url(${props => props.img});  */}
-      background-color: ${props => props.theme.grey};
+      background-image: url(${props => props.img}); 
       background-position: center center;
       background-repeat: no-repeat;
       overflow: hidden;
@@ -135,12 +144,20 @@ const Producto = styled.article`
     border-color: ${props => props.theme.disable} !important;
   }
   @media (hover: hover) {
-    .addToCart__desktop:hover .buttonWrapper {
-      > div:first-child {
-        left: 0;
-      }
-      > div:last-child {
-        transform: translateX(100%);
+    .addToCart__desktop:hover {
+      transform: scale(1.05);
+      .buttonWrapper {
+        box-shadow: 0 0 10px 4px ${props => props.theme.green} !important;
+        background: ${props => props.theme.green};
+        > div:first-child {
+          left: 0;
+          opacity: 1;
+          background: ${props => props.theme.green};
+          color: ${props => props.theme.black};
+        }
+        > div:last-child {
+          transform: translateX(100%);
+        }
       }
     }
     :hover {
@@ -200,7 +217,7 @@ function Card({info, viewDetail}) {
             <button disabled={card.product_quantity === 0} className={`addToCart__desktop ${card.product_quantity === 0 ? 'disableButton' : null}`} onClick={openDetail}>
               <div className='buttonWrapper'>
                 <div><span>agregar al carrito</span></div>
-                <div><span>agregar al carrito</span></div>
+                <div><img src={process.env.PUBLIC_URL + '/icons/bagAdd.svg'} alt='add to bag'></img></div>
               </div>
             </button>
           : null}

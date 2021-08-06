@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { UserCont } from '../context/UserContext';
 import db from '../db.json';
 
 const MenuWrapper = styled.div`
@@ -16,15 +17,47 @@ const MenuWrapper = styled.div`
     overflow-y: auto;
     padding: 1.6rem;
     color: white;
-    #pageLogo {
+    .menuHeader {
       display: none;
-      padding: 1.2rem 0;
-      .link {
-        display: content;
-        img {
-          display: block;
-          object-fit: contain;
-          width: 80%;
+      flex-direction: row;
+      padding: 1.2rem;
+      padding-left: 0;
+      #pageLogo {
+        .link {
+          display: content;
+          img {
+            display: block;
+            object-fit: contain;
+            width: 80%;
+          }
+        }
+      }
+      .cart {
+        margin: auto;
+        cursor: pointer;
+        > div {
+          position: relative;
+          width: fit-content;
+          img {
+            display: block;
+            height: 22px;
+          }
+          .itemsInCart {
+            color: #fff;
+            position: absolute;
+            display: grid;
+            place-items: center;
+            right: -13px;
+            top: -8px;
+            background: ${props => props.theme.red};
+            border-radius: 25px;
+            aspect-ratio: 1;
+            width: 20px;
+            span {
+              display: block;
+              text-align: center;
+            }
+          }
         }
       }
     }
@@ -53,6 +86,7 @@ const MenuWrapper = styled.div`
           display: flex;
           cursor: pointer;
           .link {
+            transition: .2s;
             color: inherit;
             text-decoration: inherit;
             text-transform: uppercase;
@@ -77,6 +111,7 @@ const MenuWrapper = styled.div`
   }
   @media (hover: hover) {
     .menuBlock .link:hover {
+      transform: scale(1.05) translateX(5px);
       position: relative;
       :after {
         content: '';
@@ -97,7 +132,7 @@ const MenuWrapper = styled.div`
     height: 100vh;
     #menuContainer {  
       width: 100%;
-      #pageLogo {
+      .menuHeader {
         display: flex;
       }
       .link {
@@ -110,6 +145,20 @@ const MenuWrapper = styled.div`
 function Menu() {
   const [collections, setCollections] = useState([]);
   const [authors, setAuthors] = useState([]);
+  const [open, setOpen] = useState(false);
+  const {cart} = useContext(UserCont);
+
+  function openCart() {
+    if (!open) {
+      document.getElementById('mask').style.cssText='opacity: .6; bottom: 0;';
+      document.getElementById('cart').style.cssText='transform: translateX(20vw); border-right: 1px solid black;';
+      setOpen(!open);
+    } else {
+      document.getElementById('mask').removeAttribute('style');
+      document.getElementById('cart').removeAttribute('style');
+      setOpen(!open);
+    }
+  }
 
   useEffect(() => {
     let collections = db.map(item => item.collection);
@@ -123,18 +172,30 @@ function Menu() {
   return (
     <MenuWrapper id='menu'>
       <div id='menuContainer'>
-        <div id='pageLogo'>
-          <Link className='link' to='/'>
-            <img src='https://w4w7a3s7.stackpathcdn.com/wp-content/uploads/2018/10/logo.png' alt='logo'></img>
-          </Link>
+        <div className='menuHeader'>
+          <div id='pageLogo'>
+            <Link className='link' to='/'>
+              <img src='https://w4w7a3s7.stackpathcdn.com/wp-content/uploads/2018/10/logo.png' alt='logo'></img>
+            </Link>
+          </div>
+          <div className='cart' onClick={openCart}>
+            <div>
+              {cart.length > 0 ? 
+                <div className='itemsInCart'>
+                  <span>{cart.length}</span>
+                </div>
+              : null}
+              <img src={process.env.PUBLIC_URL + '/icons/bag.svg'} alt='bag'></img>
+            </div>
+          </div>
         </div>
         <div className='menuBlock'>
           <div className='menuTitle'>
             <span>Colecciones</span>
           </div>
           <ul>
-            {collections.map(item => 
-              <li><Link className='link' to={`/collections/${item}`}>{item}</Link></li>
+            {collections.map((item, index) => 
+              <li key={`collection${index}`}><Link className='link' to={`/collections/${item}`}>{item}</Link></li>
             )}
           </ul>
         </div>
@@ -143,8 +204,8 @@ function Menu() {
             <span>Autores</span>
           </div>
           <ul>
-            {authors.map(item => 
-              <li><Link className='link' to={`/authors/${item}`}>{item}</Link></li>
+            {authors.map((item, index) => 
+              <li key={`authors${index}`}><Link className='link' to={`/authors/${item}`}>{item}</Link></li>
             )}
           </ul>
         </div>

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const Foot = styled.footer`
   background: ${props => props.theme.disable};
   .footerWrapper {
+    border-top: 1px solid ${props => props.theme.black};
     padding: 1.6rem;
     display: grid;
     grid-template-columns: 100%;
@@ -29,13 +30,14 @@ const Foot = styled.footer`
       }
       .icon {
         display: flex;
-        width: 40px;
+        width: 30px;
         aspect-ratio: 1;
-        height: 40px;
+        height: 30px;
         margin-right: 1.2rem;
         img {
           display: block;
           margin: auto;
+          height: 20px;
         }
       }
       ul {
@@ -67,6 +69,9 @@ const Foot = styled.footer`
             span:first-child {
               font-weight: bold;
             }
+            span:last-child, a {
+              color: ${props => props.theme.blackHover};
+            }
           }
         }
       }
@@ -81,18 +86,25 @@ const Foot = styled.footer`
           box-sizing: border-box;
           width: 100%;
           font-size: inherit;
-          padding: 6px 12px;
+          padding: .6rem;
           vertical-align: middle;
           background-color: transparent;
+          border-radius: 25px;
+          outline: none;
+          border: 1px solid ${props => props.theme.blackHover};
+        }
+        input:focus {
           border: 1px solid ${props => props.theme.black};
         }
         button {
-          background: ${props => props.theme.black};
+          transition: .2s;
+          background: ${props => props.theme.blackHover};
           border: none;
+          box-sizing: border-box;
           color: white;
-          text-transform: uppercase;
+          border-radius: 25px;
           font-size: inherit;
-          padding: 1.2rem;
+          padding: .8rem 1.6rem;
         }
       }
       .externalLinks {
@@ -100,6 +112,7 @@ const Foot = styled.footer`
         list-style-position: inside;
         li {
           display: list-item;
+          color: ${props => props.theme.blackHover};
         }
       }
       .socialMedia {
@@ -119,9 +132,15 @@ const Foot = styled.footer`
     }
   }
   @media (hover: hover) {
+    .formWrapper button:hover {
+      background: ${props => props.theme.green} !important;
+      box-shadow: 0 0 5px 2px ${props => props.theme.green} !important;
+      transform: scale(1.05);
+    }
     .externalLinks {
       li:hover {
-        color: green !important;
+        transform: scale(1.05) translateX(5px);
+        color: ${props => props.theme.black} !important;
       }
     }
   }
@@ -194,7 +213,7 @@ function Footer() {
           </div>
           <div className='formWrapper'>
             <form onSubmit={suscribe}>
-              <label for='email'>Correo electrónico (obligatorio)</label>
+              <label>Correo electrónico (obligatorio)</label>
               <input type='email' value={email} onChange={handleEmail} name='email'></input>
               <button type='submit'>Enviar</button>
             </form>

@@ -6,7 +6,6 @@ function ThemeContext({children}) {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <div id='mask'></div>
       {children}
     </ThemeProvider>
   );

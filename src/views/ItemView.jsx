@@ -10,8 +10,10 @@ function ItemView() {
   const {book} = useParams();
 
   useEffect(() => {
+    window.document.title= book;
     document.getElementById('navMobile').removeAttribute('style');
     document.body.removeAttribute('style');
+    document.getElementById('cart').removeAttribute('style');
     document.getElementById('menu').removeAttribute('style');
     let item = db.find(item => item.name === book);
     setItem(item);

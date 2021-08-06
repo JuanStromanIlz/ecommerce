@@ -7,13 +7,16 @@ function HomeView() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
+    window.document.title= 'Caja Negra Editorial';
+    document.getElementById('navMobile').removeAttribute('style');
     document.body.removeAttribute('style');
+    document.getElementById('cart').removeAttribute('style');
+    document.getElementById('menu').removeAttribute('style');
     setItems(db);
   }, []);
 
   return (
     <PageWrapper>
-      <video src="https://w4w7a3s7.stackpathcdn.com/wp-content/uploads/2020/11/aniversario-desktop-light.mp4" autoplay="" loop="" muted="muted" playsinline="" controlslist="nodownload"></video>
       <ItemsList title='Novedades' items={items} />
     </PageWrapper>
   );

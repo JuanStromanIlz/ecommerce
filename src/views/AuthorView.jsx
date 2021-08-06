@@ -9,9 +9,11 @@ function AuthorView() {
   const {author} = useParams();
 
   useEffect(() => {
+    window.document.title= author;
     document.getElementById('navMobile').removeAttribute('style');
     document.body.removeAttribute('style');
     document.getElementById('menu').removeAttribute('style');
+    document.getElementById('cart').removeAttribute('style');
     let authorTitles = db.filter(item => item.author === author);
     setItems(authorTitles);
   }, [author]);

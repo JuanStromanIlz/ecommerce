@@ -47,24 +47,15 @@ const GlobalStyles = createGlobalStyle`
     }
   }
   #mask {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     left: 0;
     opacity: 0;
     transition: .5s cubic-bezier(0.47, 0, 0.75, 0.72);
     background: ${props => props.theme.black};
-    z-index: 10;
+    z-index: 7;
   }
-  ${'' /* body::-webkit-scrollbar {
-    width: .4rem;
-  }
-  body::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  body::-webkit-scrollbar-thumb {
-    background-color: ${props => props.theme.black};
-  } */}
   @media (min-width: 920px) {
     body {
       font-size: 1.3rem;
