@@ -7,11 +7,14 @@ const List = styled.section`
   .listTitle {
     margin: 1.6rem;
     overflow: hidden;
-    h2 {
+    h1 {
       position: relative;
       display: inline-block;
+      -webkit-text-stroke: 1px ${props => props.theme.black};
+      color: transparent;
+      font-size: 3.2rem; 
     }
-    h2:after {
+    h1:after {
       content: "";
       position: absolute;
       width: 100vw;
@@ -66,9 +69,11 @@ function ItemsList({title,items}) {
 
   return (
     <List>
-      <div className='listTitle'>
-        <h2>{title}</h2>
-      </div>
+      {title ? 
+        <div className='listTitle'>
+          <h1>{title}</h1>
+        </div>
+      : null}
       <div className='listWrapper'>
         {items.map(item => <Card info={item} viewDetail={viewDetail} />)}
       </div>

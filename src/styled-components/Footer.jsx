@@ -89,8 +89,8 @@ const Foot = styled.footer`
           padding: .6rem;
           vertical-align: middle;
           background-color: transparent;
-          border-radius: 25px;
           outline: none;
+          border-radius: 25px;
           border: 1px solid ${props => props.theme.blackHover};
         }
         input:focus {

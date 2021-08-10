@@ -17,28 +17,28 @@ const ProductDetail = styled.div`
       cursor: pointer;
     }
     .closeTab {
-      margin-bottom: 1.2rem;
-      padding-left: 1.6rem;
-      padding-right: 1.6rem;
       display: flex;
+      flex-direction: row;
       justify-content: flex-end;
       button {
-        border: inherit;
-        background: inherit;
         padding: 0;
+        border: inherit;
+        background: transparent;
+        padding: 1.2rem 1.6rem;
         span {
-          font-size: 2.8rem;
+          display: block;
+          margin: auto;
           color: white;
         }
       }
     }
     .detalleInfo {
       background: white;
+      padding: 1.6rem;
       .product {
         display: flex;
         flex-direction: row;
         gap: 1.6rem;
-        padding: 1.6rem;
         .productImage {
           width: 45%;
           max-width: 100px;
@@ -63,14 +63,18 @@ const ProductDetail = styled.div`
             margin-top: .6rem;
             font-weight: bold;
           }
+          .link {
+            margin-top: auto;
+            font-size: 1.6rem;
+            color: ${props => props.theme.black};
+          }
         }
       }
       .order {
         display: flex;
         flex-direction: column;
-        padding-left: 1.6rem;
-        padding-right: 1.6rem;
-        padding-bottom: 1.6rem;
+        padding-top: 1.2rem;
+        padding-bottom: 1.2rem;
         label {
           margin: auto 0;
         }
@@ -105,79 +109,35 @@ const ProductDetail = styled.div`
         }
       }
       .addToCart {
-        display: flex;
-        flex-direction: row;
-        div {
-          display: flex;
-          .link {
-            color: inherit;
-            text-decoration: none;
-            padding: 1.2rem;
-            margin: auto;
-          }
-          button {
-            width: 100%;
-            height: 60px;
-            border: inherit;
-            background: ${props => props.theme.black};
-            padding: 1.2rem;
-            margin: 0;
-            text-align: center;
-            color: white;
-            font-size: 1.6rem;
-            text-transform: uppercase;
-            position: relative;
-            .adding {
-              background: ${props => props.theme.black};
-              opacity: 0;
-              display: inline-block;
-              position: absolute;
-              inset: 0;
-              display: flex;
-              justify-content: center;
-            }
-            .adding div {
-              box-sizing: border-box;
-              display: block;
-              position: absolute;
-              top: 1rem;
-              bottom: 1rem;
-              aspect-ratio: 1;
-              border: .3rem solid #fff;
-              border-radius: 50%;
-              animation: adding 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-              border-color: #fff transparent transparent transparent;
-            }
-            .adding div:nth-child(1) {
-              animation-delay: -0.45s;
-            }
-            .adding div:nth-child(2) {
-              animation-delay: -0.3s;
-            }
-            .adding div:nth-child(3) {
-              animation-delay: -0.15s;
-            }
-            @keyframes adding {
-              0% {
-                transform: rotate(0deg);
-              }
-              100% {
-                transform: rotate(360deg);
-              }
-            }
-          }
-        }
-        div.moreInfo {
-          border-top: 1px solid grey;
-        }
-        div:last-child {
-          flex-grow: 1;  
+        button {
+          transition: all .3s;
+          border: none;
+          width: 100%;
+          background: ${props => props.theme.black};
+          border-radius: 25px;
+          border: 1px solid ${props => props.theme.black};
+          padding: 1.2rem;
+          margin: 0;
+          text-align: center;
+          color: white;
+          font-size: 1.6rem;
+          text-transform: uppercase;
+          position: relative;
         }
       }
     }
   }
   @media (hover: hover) {
+    .link:hover {
+      color: ${props => props.theme.green} !important;
+    }
     .closeTab button:hover span {
+      color: ${props => props.theme.black} !important;
+    }
+    .addToCart button:hover {
+      background: ${props => props.theme.green} !important;
+      border: 1px solid ${props => props.theme.greenTop} !important;
+      box-shadow: 0 0 10px 4px ${props => props.theme.green} !important;
       color: ${props => props.theme.black} !important;
     }
   }
@@ -217,14 +177,10 @@ function Detail({product}) {
       price: finalPrice
     }
     addItem(itemToCard);
-    document.getElementsByClassName('adding')[0].style.opacity=1;
-    setTimeout(()=> {
-      document.getElementsByClassName('adding')[0].removeAttribute('style');
-      document.getElementById('addButton').innerHTML='item agregado con exito!'
-      setTimeout(() => {
-        document.getElementById('addButton').innerHTML='agregar al carrito';
-      }, 1100);
-    }, 1000);
+      document.getElementById('addToCart__text').innerHTML='¡Buena Eleccion!';
+      setTimeout(()=> {
+        document.getElementById('addToCart__text').innerHTML='Agregar al carrito';
+      }, 1000);
   }
   /* Quantity */
   function quantityAdd() {
@@ -260,6 +216,7 @@ function Detail({product}) {
               <span className='title'>{card.name}</span>
               <span className='author'>{card.author}</span>
               <span className='price'>${card.price}</span>
+              <Link to={`/books/${card.name}`} className='link'>Ver detalle</Link>
             </div>
           </div>
           <div className='order'>
@@ -277,15 +234,9 @@ function Detail({product}) {
             </div>
           </div>
           <div className='addToCart'>
-            <div className='moreInfo'>
-              <Link className='link' to={`/${card.name}`}>Más info</Link>
-            </div>
-            <div>
-              <button onClick={addToCart}>
-                <span id='addButton'>Agregar al carrito</span>
-                <div className='adding'><div></div><div></div><div></div></div>
-              </button>
-            </div>
+            <button onClick={addToCart}>
+              <span id='addToCart__text'>Agregar al carrito</span>
+            </button>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { InView } from 'react-intersection-observer';
 import styled from 'styled-components';
+import AddButton from './AddButton';
 
 const Producto = styled.article`
   opacity: 0;
@@ -21,7 +22,8 @@ const Producto = styled.article`
     box-sizing: border-box;
     cursor: pointer;
     background: white;
-    border: 2px solid ${props => props.theme.black};
+    border-radius: 25px;
+    border: 1px solid ${props => props.theme.black};
     padding: .6rem;
     font-size: inherit;
     img {
@@ -35,51 +37,8 @@ const Producto = styled.article`
     left: 0;
     right: 0;
     bottom: 2.6rem;
-    width: 100%;
-    box-sizing: border-box;
-    cursor: pointer;
-    border: inherit;
-    margin: 0;
-    padding: 0;
-    font-size: inherit;
-    background: transparent;
-    .buttonWrapper {
-      transition: .2s;
-      position: relative;
-      display: flex;
-      flex-direction: row;
-      overflow: hidden;
-      height: 35px;
+    button {
       width: 80%;
-      margin: 0 auto;
-      background: transparent;
-      > div {
-        width: 100%;
-        transition: all .3s;
-        color: white;
-        text-transform: uppercase;
-        display: flex;
-        span {
-          margin: auto;
-        }
-      }
-      > div:first-child {
-        background: transparent;
-        opacity: 0;
-        position: absolute;
-        left: -100%;
-        top: 0;
-        bottom: 0;
-      }
-      > div:last-child {
-        background: white;
-        border: 2px solid ${props => props.theme.black};
-        img {
-          display: block;
-          margin: auto;
-          height: 20px;
-        }
-      }
     }
   }
   .imgContainer {
@@ -144,22 +103,6 @@ const Producto = styled.article`
     border-color: ${props => props.theme.disable} !important;
   }
   @media (hover: hover) {
-    .addToCart__desktop:hover {
-      transform: scale(1.05);
-      .buttonWrapper {
-        box-shadow: 0 0 10px 4px ${props => props.theme.green} !important;
-        background: ${props => props.theme.green};
-        > div:first-child {
-          left: 0;
-          opacity: 1;
-          background: ${props => props.theme.green};
-          color: ${props => props.theme.black};
-        }
-        > div:last-child {
-          transform: translateX(100%);
-        }
-      }
-    }
     :hover {
       .addToCart__desktop {
         visibility: visible;
@@ -214,12 +157,7 @@ function Card({info, viewDetail}) {
             </div>
           : null}
           {card.product_quantity !== 0 ?
-            <button disabled={card.product_quantity === 0} className={`addToCart__desktop ${card.product_quantity === 0 ? 'disableButton' : null}`} onClick={openDetail}>
-              <div className='buttonWrapper'>
-                <div><span>agregar al carrito</span></div>
-                <div><img src={process.env.PUBLIC_URL + '/icons/bagAdd.svg'} alt='add to bag'></img></div>
-              </div>
-            </button>
+            <AddButton Class={'addToCart__desktop'} disabled={card.product_quantity} callTo={openDetail} />
           : null}
         </div>
         <div className='info'>

@@ -6,6 +6,7 @@ const CartComponent = styled.div`
   position: fixed;
   transform: translateY(100%);
   transition: .4s;
+  visibility: hidden;
   bottom: 60px;
   right: 0;
   left: 0;

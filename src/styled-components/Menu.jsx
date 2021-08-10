@@ -29,6 +29,7 @@ const MenuWrapper = styled.div`
             display: block;
             object-fit: contain;
             width: 80%;
+            height: 55px;
           }
         }
       }
@@ -132,6 +133,8 @@ const MenuWrapper = styled.div`
     height: 100vh;
     #menuContainer {  
       width: 100%;
+      padding-top: 0;
+      padding-bottom: 0;
       .menuHeader {
         display: flex;
       }
@@ -151,7 +154,7 @@ function Menu() {
   function openCart() {
     if (!open) {
       document.getElementById('mask').style.cssText='opacity: .6; bottom: 0;';
-      document.getElementById('cart').style.cssText='transform: translateX(20vw); border-right: 1px solid black;';
+      document.getElementById('cart').style.cssText='transform: translateX(20vw); border-right: 1px solid black; visibility: visible;';
       setOpen(!open);
     } else {
       document.getElementById('mask').removeAttribute('style');
