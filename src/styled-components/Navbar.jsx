@@ -63,7 +63,7 @@ function Nav() {
       document.getElementById('navMobile').style.borderTop='1px solid white';
       document.getElementById('productDetail').removeAttribute('style');
       document.getElementById('mask').style.cssText='opacity: .6; bottom: 0;';
-      document.getElementById('cart').style.transform='translateY(0)';
+      document.getElementById('cart').style.cssText='transform: translateY(0); visibility: visible;';
       document.getElementById('menu').removeAttribute('style');
       setCart(!cartMenu);
       if (menu) {

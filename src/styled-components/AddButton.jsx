@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  ${'' /* height: 45px; */}
   button {
     margin: 0 auto;
     width: 100%;
@@ -43,6 +42,7 @@ const Wrapper = styled.div`
         }
       }
       > div:first-child {
+        background: ${props => props.theme.greenTop};
         opacity: 0;
         position: absolute;
         left: -100%;
@@ -60,8 +60,8 @@ const Wrapper = styled.div`
   }
   @media (hover: hover) {
     .buttonWrapper:hover {
-      border: 1px solid ${props => props.theme.greenTop};
-      box-shadow: 0 0 10px 4px ${props => props.theme.green} !important;
+      border: 1px solid white;
+      box-shadow: 0 0 10px 4px ${props => props.theme.greenTop} !important;
       > div:first-child {
         left: 0;
         opacity: 1;
@@ -78,7 +78,7 @@ function AddButton({disabled, callTo, Class}) {
     <Wrapper className={Class}>
       <button disabled={disabled === 0} className={disabled === 0 ? 'disableButton' : null} onClick={callTo}>
         <div className='buttonWrapper'>
-          <div><img src={process.env.PUBLIC_URL + '/icons/bagAdd.svg'} alt='add to bag'></img></div>
+          <div><span>agregar</span></div>
           <div><img src={process.env.PUBLIC_URL + '/icons/bagAdd.svg'} alt='add to bag'></img></div>
         </div>
       </button>
