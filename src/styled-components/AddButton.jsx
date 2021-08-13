@@ -38,7 +38,7 @@ const Wrapper = styled.div`
         span {
           margin: auto;
           font-size: 1.4rem;
-          font-weight: bold;
+          font-weight: 900;
         }
       }
       > div:first-child {

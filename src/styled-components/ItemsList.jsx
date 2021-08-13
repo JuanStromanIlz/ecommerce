@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import Card from './Card';
-import Detail from './Detail';
 
 const List = styled.section`
   .listTitle {
@@ -13,6 +11,7 @@ const List = styled.section`
       -webkit-text-stroke: 1px ${props => props.theme.black};
       color: transparent;
       font-size: 3.2rem; 
+      font-weight: 900;
     }
     h1:after {
       content: "";
@@ -38,7 +37,7 @@ const List = styled.section`
       text-align: left;
     }
     .listWrapper {
-      grid-template-columns: repeat(4, calc(100% / 4));
+      grid-template-columns: repeat(5, calc(100% / 5));
       > div:nth-child(4n + 1) article {
         transition-delay: 0 !important;
       }
@@ -56,16 +55,6 @@ const List = styled.section`
 `;
 
 function ItemsList({title,items}) {
-  const [itemDetail, setItemDetail] = useState({});
-
-  function viewDetail(product) {
-    setItemDetail(product);
-    document.body.style.overflow='hidden';
-    document.getElementById('productDetail').style.transform='translate(0)';
-    document.getElementById('mask').style.cssText='opacity: .6; bottom: 0;';
-    document.getElementById('cart').removeAttribute('style');
-    document.getElementById('menu').removeAttribute('style');
-  }
 
   return (
     <List>
@@ -75,9 +64,8 @@ function ItemsList({title,items}) {
         </div>
       : null}
       <div className='listWrapper'>
-        {items.map(item => <Card info={item} viewDetail={viewDetail} />)}
+        {items.map(item => <Card info={item} />)}
       </div>
-      <Detail product={itemDetail} />
     </List>
   );
 }

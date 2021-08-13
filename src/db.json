@@ -38,5 +38,75 @@
     "description": "«Lauren Berlant es una de las más importantes y originales críticas de la lógica de la cultura contemporánea. Aquí ella ofrece un punto de vista novedoso sobre procesos de la vida cotidiana que nos resultan familiares, a través de su sutil pero audaz lectura del optimismo cruel, esa dinámica psíquica y estructural que mantiene a las personas cerca de objetos, fantasías y mundos que en verdad las debilitan.» ",
     "img": "https://w4w7a3s7.stackpathcdn.com/wp-content/uploads/2020/12/La-Biblia-Psiquika-Tapa-Alta-180x270.jpg",
     "price": 1300
+  },
+  { 
+    "product_id": 5,
+    "product_quantity": 10,
+    "name": "GOBERNAR LA UTOPÍA",
+    "author": "Martín Arboleda",
+    "collection": "Futuros Proximos",
+    "description": "La sucesión de crisis que se inició en 2008 y llegó a su punto más álgido con la pandemia del coronavirus reveló una verdad categórica: pese a lo que dicta el sentido predominante, el despliegue planetario del capital es un proceso deliberadamente planificado. El espejismo de un mercado “libre” que se autorregula de manera eficiente, con el que el neoliberalismo pretendió enterrar para siempre las discusiones en torno a una gestión social de la economía, se desvaneció frente a la evidencia de un Estado activista que redistribuye riqueza hacia arriba a través de exenciones tributarias, subsidios y rescates a grandes compañías. El auge de megacorporaciones como Amazon, Google y Walmart fue posible gracias a esquemas estratégicos públicos y privados tan metódicos que han sido comparados con los de Gosplan, la agencia de planificación central de la Unión Soviética. Pero si la planificación del capitalismo tardío trajo consigo una era de extinciones masivas y desigualdad extrema, ¿por qué no volver a disputar el diseño y ejecución de los planes, e incluso el significado mismo de la planificación?",
+    "img": "https://w4w7a3s7.stackpathcdn.com/wp-content/uploads/2021/08/GLU_CN_alta.jpg",
+    "price": 1100
+  },
+  { 
+    "product_id": 6,
+    "product_quantity": 2,
+    "name": "CONSEJOS DE UN SABELOTODO",
+    "author": "John Waters",
+    "collection": "Synesthesia",
+    "description": "“Pertenecemos a una suerte de club, una periferia lunática orgullosa de agruparse. Existe un camino a la desgracia muy gozoso allá afuera y, si me permiten ser su gurú, les enseñaré cómo triunfar en la insanidad hasta tomar control de su baja autoestima”, escribe Waters, y nos invita a seguir sus instrucciones en esta suerte de manual queer para el buen vivir.",
+    "img": "https://w4w7a3s7.stackpathcdn.com/wp-content/uploads/2021/06/Waters_Consejos.jpg",
+    "price": 1300
+  },
+  { 
+    "product_id": 7,
+    "product_quantity": 5,
+    "name": "Pequeño mundo ilustrado",
+    "author": "María Negroni",
+    "collection": "Numancia",
+    "description": "“De la colección me atrae, sobre todo, su índole arbitraria, todo lo que la asemeja al juego del arte (y al arte del juego), su compromiso con lo inalcanzable. Al priorizar lo que falta, consigue relanzar el deseo y así extiende, como en la escritura, un placer ansioso, siempre dispuesto a multiplicar las series para ampliar el yo, para cargarlo, aunque sea fugazmente, de sentido”, dice María Negroni en uno de los textos incluidos aquí, y sus palabras podrían hacerse extensivas a todo el libro. Es que en este inventario de fetiches y objetos maravillosos –potencialmente inagotable e infinito como cualquier colección– está en primer plano la mirada inquieta de quien bucea en los pliegues del arte y la cultura para encontrar misterios mínimos y develar la belleza de lo que se nos esconde.",
+    "img": "https://w4w7a3s7.stackpathcdn.com/wp-content/uploads/2018/11/PMI_CN_ALTA.jpg",
+    "price": 1100
+  },
+  { 
+    "product_id": 8,
+    "product_quantity": 5,
+    "name": "FRAGMENTAR EL FUTURO",
+    "author": "Yuk Hui",
+    "collection": "Futuros Proximos",
+    "description": "Nuestra civilización, basada en el pensamiento europeo ilustrado, exige hoy una fragmentación y diversificación. La globalización fue un proceso de colonización tecnológica y de sincronización que hizo converger diferentes temporalidades históricas en un único eje definido por la secuencia Premodernidad-Modernidad-Posmodernidad-Apocalipsis. Los problemas que acarrea esta cultura monotécnica, que prioriza formas específicas del conocimiento vinculadas al deseo de medir, calcular y dominar, están llevando al agotamiento de los recursos naturales, la degradación de la vida sobre la Tierra y la destrucción del medioambiente. Fragmentar este futuro que se presenta hoy como inevitable no supone oponerse a la inteligencia artificial o el aprendizaje automático. Tampoco volver el tiempo atrás. En todo caso lo que pretende es escapar de la fantasía transhumanista que subordina a los otros seres a los términos de su propio destino y proponer una nueva agenda y una nueva imaginación tecnológica que abran paso a diferentes dinámicas entre lo humano y lo no-humano.",
+    "img": "https://w4w7a3s7.stackpathcdn.com/wp-content/uploads/2020/09/33_YukHui_Fragmentar_FP_TAPA_A.jpg",
+    "price": 900
+  },
+  { 
+    "product_id": 9,
+    "product_quantity": 8,
+    "name": "LA SEGUNDA VENIDA",
+    "author": "Franco “Bifo” Berardi",
+    "collection": "Futuros Proximos",
+    "description": "En los sesenta la consigna era “socialismo o barbarie”. Pero el socialismo que nacía de las luchas obreras y feministas no fue capaz de consolidarse y la barbarie triunfó. Hoy enfrentamos la misma alternativa, solo que más radical: o el comunismo o la extinción.",
+    "img": "https://w4w7a3s7.stackpathcdn.com/wp-content/uploads/2021/03/LSV_CN_BAJA.jpg",
+    "price": 800
+  },
+  { 
+    "product_id": 10,
+    "product_quantity": 8,
+    "name": "NO HAY MANERA DE ESCAPAR",
+    "author": "Boris Vian",
+    "collection": "Numancia",
+    "description": "No hay manera de escapar puede leerse al menos de dos maneras: como una novela policial con todos los ingredientes del género o como un particular trabajo colaborativo entre Boris Vian y Oulipo, el grupo de literatura potencial francés nacido en 1960, un año después de la muerte del autor.",
+    "img": "https://w4w7a3s7.stackpathcdn.com/wp-content/uploads/2020/10/TAPA-NHMDE_Boris-Vian_alta.jpg",
+    "price": 800
+  },
+  { 
+    "product_id": 11,
+    "product_quantity": 8,
+    "name": "Objeto Satie",
+    "author": "María Negroni",
+    "collection": "Numancia",
+    "description": "Una cama, una mesa, una silla, un piano roto, un ejemplar de Las Flores del Mal, y más de cuatro mil papelitos dispersos con ideas y ocurrentes apuntes armaban la escena que se encontró en la habitación de Erik Satie al momento de su muerte en 1925. Suerte de reconstrucción literaria de su existencia –y quizá del contenido de esas anotaciones fragmentarias–, María Negroni se apodera en este libro de la voz de uno de los músicos y artistas más originales y aún vigentes del siglo XX.",
+    "img": "https://w4w7a3s7.stackpathcdn.com/wp-content/uploads/2018/10/SATIE-1.jpg",
+    "price": 750
   }
 ]

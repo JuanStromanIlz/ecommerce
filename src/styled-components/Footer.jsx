@@ -17,6 +17,7 @@ const Foot = styled.footer`
         margin-bottom: 1.2rem;
         span {
           position: relative;
+          font-weight: 700;
         }
         span:after {
           content: "";
@@ -67,7 +68,7 @@ const Foot = styled.footer`
               text-decoration: none;
             }
             span:first-child {
-              font-weight: bold;
+              font-weight: 900;
             }
             span:last-child, a {
               color: ${props => props.theme.blackHover};
@@ -97,6 +98,7 @@ const Foot = styled.footer`
           border: 1px solid ${props => props.theme.black};
         }
         button {
+          cursor: pointer;
           transition: .2s;
           background: ${props => props.theme.blackHover};
           border: none;
@@ -133,9 +135,7 @@ const Foot = styled.footer`
   }
   @media (hover: hover) {
     .formWrapper button:hover {
-      background: ${props => props.theme.green} !important;
-      box-shadow: 0 0 5px 2px ${props => props.theme.green} !important;
-      transform: scale(1.05);
+      background: ${props => props.theme.black} !important;
     }
     .externalLinks {
       li:hover {

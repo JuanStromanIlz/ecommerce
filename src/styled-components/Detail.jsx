@@ -39,6 +39,7 @@ const ProductDetail = styled.div`
         display: flex;
         flex-direction: row;
         gap: 1.6rem;
+        margin-bottom: 1.6rem;
         .productImage {
           width: 45%;
           max-width: 100px;
@@ -58,10 +59,11 @@ const ProductDetail = styled.div`
           .title {
             font-size: 2rem;
             text-transform: uppercase;
+            font-weight: 700;
           }
           .price {
             margin-top: .6rem;
-            font-weight: bold;
+            font-weight: 900;
           }
           .link {
             margin-top: auto;
@@ -73,10 +75,27 @@ const ProductDetail = styled.div`
       .order {
         display: flex;
         flex-direction: column;
-        padding-top: 1.2rem;
-        padding-bottom: 1.2rem;
+        margin-bottom: 1.6rem;
+        .orderHeader {
+          overflow: hidden;
+          margin-bottom: 1.2rem;
+          span {
+            position: relative;
+            font-weight: 700;
+          }
+          span:after {
+            content: "";
+            position: absolute;
+            width: 100vw;
+            border-top: 1px solid ${props => props.theme.black};
+            left: 120%;
+            top: 50%;
+            bottom: 50%;
+          }
+        }
         label {
           margin: auto 0;
+          font-weight: 700;
         }
         .quantity {
           display: flex;
@@ -89,7 +108,6 @@ const ProductDetail = styled.div`
             button {
               border: none;
               background: inherit;
-              padding: 0 1.4rem;
               span {
                 display: block;
               }
@@ -113,16 +131,45 @@ const ProductDetail = styled.div`
           transition: all .3s;
           border: none;
           width: 100%;
-          background: ${props => props.theme.black};
-          border-radius: 25px;
-          border: 1px solid ${props => props.theme.black};
-          padding: 1.2rem;
+          padding: 0;
           margin: 0;
-          text-align: center;
-          color: white;
-          font-size: 1.6rem;
-          text-transform: uppercase;
-          position: relative;
+          border-radius: 25px;
+          .buttonWrapper {
+            transition: 1s;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+            margin: 0 auto;
+            border-radius: 25px;
+            height: 45px;
+            > div {
+              border-radius: 25px;
+              width: 100%;
+              transition: all .3s;
+              color: white;
+              text-transform: uppercase;
+              display: flex;
+              padding: 1rem;
+              box-sizing: border-box;
+              border: 1px solid ${props => props.theme.black};
+              background: ${props => props.theme.black};
+              span {
+                margin: auto;
+                font-size: 1.4rem;
+                font-weight: 700;
+              }
+            }
+            > div:first-child {
+              border: 1px solid ${props => props.theme.greenTop};
+              background: ${props => props.theme.greenTop};
+              opacity: 0;
+              position: absolute;
+              left: -100%;
+              top: 0;
+              bottom: 0;
+            }
+          }
         }
       }
     }
@@ -132,12 +179,6 @@ const ProductDetail = styled.div`
       color: ${props => props.theme.green} !important;
     }
     .closeTab button:hover span {
-      color: ${props => props.theme.black} !important;
-    }
-    .addToCart button:hover {
-      background: ${props => props.theme.green} !important;
-      border: 1px solid ${props => props.theme.greenTop} !important;
-      box-shadow: 0 0 10px 4px ${props => props.theme.green} !important;
       color: ${props => props.theme.black} !important;
     }
   }
@@ -166,7 +207,6 @@ function Detail({product}) {
   }
 
   function addToCart() {
-    let finalPrice = card.price * quantity;
     let itemToCard = {
       id: card.product_id,
       name: card.name,
@@ -174,13 +214,20 @@ function Detail({product}) {
       author: card.author,
       img: card.img,
       quantity: quantity,
-      price: finalPrice
+      price: card.price
     }
     addItem(itemToCard);
-      document.getElementById('addToCart__text').innerHTML='¡Buena Eleccion!';
+      let wrapper = document.getElementsByClassName('addToCart')[0].getElementsByClassName('buttonWrapper')[0];
+      let firstDiv = wrapper.getElementsByTagName('div')[0];
+      let lastDiv = wrapper.getElementsByTagName('div')[1];
+      wrapper.style.boxShadow='0 0 10px 4px #3EC450';
+      firstDiv.style.cssText='left: 0; opacity: 1; border-color: white;';
+      lastDiv.style.cssText='transform: translateX(100%);';
       setTimeout(()=> {
-        document.getElementById('addToCart__text').innerHTML='Agregar al carrito';
-      }, 1000);
+        wrapper.removeAttribute('style');
+        firstDiv.removeAttribute('style');
+        lastDiv.removeAttribute('style');
+      }, 2500);
   }
   /* Quantity */
   function quantityAdd() {
@@ -220,6 +267,9 @@ function Detail({product}) {
             </div>
           </div>
           <div className='order'>
+            <div className='orderHeader'>
+              <span>Información de la orden</span>
+            </div>
             <div className='quantity'>
               <label>Cantidad</label>
               <div className='counter'>
@@ -235,7 +285,10 @@ function Detail({product}) {
           </div>
           <div className='addToCart'>
             <button onClick={addToCart}>
-              <span id='addToCart__text'>Agregar al carrito</span>
+              <div className='buttonWrapper'>
+                <div><span>buena eleccion</span></div>
+                <div><span>agregar al carrito</span></div>
+              </div>
             </button>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const UserCont = createContext();
 const {Consumer, Provider} = UserCont;
@@ -7,11 +8,25 @@ function UserContext({children}) {
   const [isLogged, setIsLogged] = useState(false);
   const [user, setUser] = useState({});
   const [cart, setCart] = useState([]);
+  const [productDetail, setProductDetail] = useState({});
+  const [lastPage, setLastPage] = useState('');
+  const history = useHistory();
+  const location = useLocation();
 
   function logIn(form) {
     setIsLogged(true);
     setUser(form);
     localStorage.setItem('user', JSON.stringify(form));
+    history.push(lastPage);
+  }
+
+  function viewDetail(product) {
+    setProductDetail(product);
+    document.body.style.overflow='hidden';
+    document.getElementById('productDetail').style.transform='translate(0, -60px)';
+    document.getElementById('mask').style.cssText='opacity: .6; bottom: 0;';
+    document.getElementById('cart').removeAttribute('style');
+    document.getElementById('menu').removeAttribute('style');
   }
 
   function addItem(item) {
@@ -27,9 +42,10 @@ function UserContext({children}) {
 
   function checkout() {
     if (isLogged) {
-      console.log(user, cart);
+      history.push('/checkout');
     } else {
-      console.log('ingrese para realizar esta acción');
+      history.push('/user');
+      setLastPage(location.pathname);
     }
   }
 
@@ -37,6 +53,7 @@ function UserContext({children}) {
     let localUser = localStorage.getItem('user');
     if (localUser) {
       setIsLogged(true);
+      setUser(JSON.parse(localUser));
     }
   }, []);
 
@@ -45,6 +62,8 @@ function UserContext({children}) {
       isLogged: isLogged,
       user: user,
       cart: cart,
+      productDetail: productDetail,
+      viewDetail: viewDetail,
       logIn: logIn,
       addItem: addItem,
       removeItem: removeItem,

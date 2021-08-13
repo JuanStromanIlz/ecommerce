@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 
 const ItemsContainer = styled.div`
   padding: 1.6rem;
   background: ${props => props.theme.disable};
-  border-top: 1px solid ${props => props.theme.black};
   .itemHeader {
     overflow: hidden;
     margin-right: auto;
@@ -13,6 +12,7 @@ const ItemsContainer = styled.div`
       position: relative;
       display: inline-block;
       text-transform: uppercase;
+      font-weight: 700;
     }
     span:after {
       content: "";
@@ -60,8 +60,9 @@ const ItemsContainer = styled.div`
           font-style: italic;
         }
         .title {
-          font-size: 2rem;
+          font-size: 1.6rem;
           text-transform: uppercase;
+          font-weight: 700;
         }
       }
     }
@@ -111,40 +112,64 @@ const ItemsContainer = styled.div`
   }
 `;
 
-function MoreItems({items}) {
+function Carrousel({items}) {
   const [index, setIndex] = useState([]);
   const [indexCard, setIndexCard] = useState(0);
   const [touchStartPoint, setTouchStartPoint] = useState(0);
   const [moveDirection, setMoveDirection] = useState(true);
+  const [autoSlide, setAutoSlide] = useState(true);
 
   /* Touch */
   function touchStart(e) {
     setTouchStartPoint(e.changedTouches[0].clientX);
+    autoSlideStop();
   }
   function touchMove(e) {
     setMoveDirection(e.changedTouches[0].clientX < touchStartPoint);
   }
   function touchEnd() {
     let lastCard = indexCard + 1;
-    if (moveDirection && lastCard < index.length) {
-      setIndexCard(indexCard +1);
-    } else if(!moveDirection && indexCard > 0) {
-      setIndexCard(indexCard -1);
-    }
+    setTimeout(()=> {
+      if (moveDirection) {
+        if (lastCard < index.length) {
+          setIndexCard(indexCard +1);
+        }
+        if (lastCard === index.length) {
+          setIndexCard(0);
+        }
+      } else if(!moveDirection && indexCard > 0) {
+        setIndexCard(indexCard -1);
+      }
+    }, 250);
   }
   /* Buttons */
   function getCard(index) {
     setIndexCard(index);
   }
 
+  function autoSlideStop() {
+    setAutoSlide(false);
+  }
+
   useEffect(()=> {
     setIndex(items);
-  }, [items]);
+    if (autoSlide) {
+      setTimeout(()=> {
+        let nextCard = indexCard + 1;
+        if (nextCard < index.length) {
+          setIndexCard(indexCard +1);
+        }
+        if (nextCard === index.length) {
+          setIndexCard(0);
+        }
+      }, 3000);
+    }
+  }, [items, index.length, autoSlide, indexCard]);
 
   return (
     <ItemsContainer
-      index={index}
       onTouchStart={touchStart}
+      onMouseEnter={autoSlideStop}
       onTouchEnd={touchEnd}
       onTouchMove={touchMove}
     > 
@@ -180,4 +205,4 @@ function MoreItems({items}) {
   );
 }
 
-export default MoreItems;
+export default Carrousel;

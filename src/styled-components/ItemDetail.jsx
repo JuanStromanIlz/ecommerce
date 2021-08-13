@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { UserCont } from '../context/UserContext';
 import AddButton from './AddButton';
 
 const Item = styled.div`
@@ -41,7 +43,8 @@ const Item = styled.div`
       margin-bottom: 1.6rem;
       .imgDetail {
         display: block;
-        width: 65%;
+        height: 300px;
+        object-fit: contain;
         margin: auto;
         margin-bottom: 1.6rem;
       }
@@ -51,16 +54,21 @@ const Item = styled.div`
       .title {
         text-transform: uppercase;
         margin-bottom: 1.2rem;
+        font-weight: 700;
       }
       > div {
         display: flex;
         margin-bottom: 1.2rem;
         .price {
-          font-weight: bold;
+          font-weight: 700;
         }
         .author {
           text-transform: uppercase;
         }
+      }
+      p {
+        font-size: 1.4rem;
+        line-height: 1.8rem;
       }
     }
   }
@@ -75,20 +83,16 @@ const Item = styled.div`
       gap: 1.6rem;
       .detail {
         margin-bottom: 0;
-        .imgDetail {
-          width: 180px;
-        }
       }
     }
   }
 `;
 
 function ItemDetail({item}) {
+  const {viewDetail} = useContext(UserCont);
 
   function openDetail() {
-    document.body.style.overflow='hidden';
-    document.getElementById('productDetail').style.transform='translate(0)';
-    document.getElementById('mask').style.cssText='opacity: .6; bottom: 0;';
+    viewDetail(item);
   }
 
   return (

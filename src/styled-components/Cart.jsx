@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { UserCont } from '../context/UserContext';
 import styled from 'styled-components';
 
@@ -18,22 +18,27 @@ const CartComponent = styled.div`
     .checkout {
       .checkoutWrapper {
         position: relative;
-        height: 60px;
+        height: 44px;
+        margin: 1.6rem;
         button {
           cursor: pointer;
           position: absolute;
           bottom: 0;
           top: 0;
           width: 100%;
-          padding: 1.2rem;
-          letter-spacing: 2.2px;
-          text-transform: uppercase;
-          border: inherit;
+          color: white;
+          font-size: 1.6rem;
+          transition: all .3s;
+          width: 100%;
           background: ${props => props.theme.black};
+          border-radius: 25px;
+          border: 1px solid ${props => props.theme.black};
+          padding: 1.2rem;
           margin: 0;
           text-align: center;
           color: white;
-          font-size: 1.4rem;
+          font-weight: 700;
+          text-transform: uppercase;
         }
       }
     }
@@ -52,11 +57,10 @@ const CartComponent = styled.div`
         padding: 1rem 0;
         .itemImg {
           aspect-ratio: 3 / 4;
-          max-height: 100px;
           img {
             display: block;
-            width: 100%;
-            height: 100%;
+            object-fit: contain;
+            height: 100px;
           }
         }
         .itemInfo {
@@ -68,6 +72,7 @@ const CartComponent = styled.div`
           }
           .title {
             text-transform: uppercase;
+            font-weight: 700;
           }
           .quantityPrice {
             font-weight: bold;
@@ -101,6 +106,14 @@ const CartComponent = styled.div`
       border-radius: 50px;
     }
   }
+  @media (hover: hover) {
+    .checkoutWrapper button:hover {
+      border: 1px solid white !important;
+      box-shadow: 0 0 10px 4px ${props => props.theme.greenTop} !important;
+      background: ${props => props.theme.greenTop} !important;
+      color: white !important;
+    }
+  }
   @media (min-width: 920px) {
     display: inherit;
     width: 20vw;
@@ -108,18 +121,14 @@ const CartComponent = styled.div`
     left: 0;
     bottom: 0;
     transform: translateY(0);
-    .checkoutWrapper {
-      height: 44px !important;
-      margin: 1.6rem !important;
-      button {
-        font-size: inherit !important;
-      }
-    }
     .itemDelete img {
       height: 16px !important;
     }
     .cartList {
       max-height: calc(100vh - 72px) !important;
+    }
+    .checkoutWrapper button {
+      font-size: inherit !important;
     }
   }
 `;
@@ -141,7 +150,7 @@ function Cart() {
                   <span className='collection'>{item.collection}</span>
                   <span className='title'>{item.name}</span>
                   <span className='author'>{item.author}</span>
-                  <span className='quantityPrice'>{`${item.quantity} x ${item.price}`}</span>
+                  <span className='quantityPrice'>{`$${item.price} x ${item.quantity}`}</span>
                 </div>
                 <div className='itemDelete' onClick={() => removeItem(index)}>
                   <img src={process.env.PUBLIC_URL + '/icons/delete.svg'} alt='delete'></img>
@@ -153,7 +162,9 @@ function Cart() {
         {cart.length !== 0 ? 
           <div className='checkout'>
             <div className='checkoutWrapper'>
-              <button onClick={checkout}>checkout</button>
+              <button onClick={checkout}>
+                <span>checkout</span>
+              </button>
             </div>
           </div>
         : null}

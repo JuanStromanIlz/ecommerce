@@ -13,13 +13,17 @@ const MenuWrapper = styled.div`
   background: ${props => props.theme.black};
   width: 100%;
   height: calc(100% - 60px);
+  overflow-y: auto;
   #menuContainer {
     overflow-y: auto;
     padding: 1.6rem;
     color: white;
     .menuHeader {
+      background: ${props => props.theme.black};
       display: none;
       flex-direction: row;
+      position: sticky;
+      top: 0;
       padding: 1.2rem;
       padding-left: 0;
       #pageLogo {
@@ -65,24 +69,19 @@ const MenuWrapper = styled.div`
     .menuBlock {
       padding: 1.2rem;
       .menuTitle {
-        overflow: hidden;
-        margin-top: 1.2rem;
-        margin-bottom: 1.2rem;
+        cursor: pointer;
         span {
-          position: relative;
-        }
-        span:after {
-          content: "";
-          background-color: white;
-          position: absolute;
-          width: 100vw;
-          border-top: 1px solid white;
-          left: 120%;
-          top: 50%;
-          bottom: 50%;
+          text-transform: uppercase;
+          font-size: 1.6rem;
+          font-weight: 700;
         }
       }
       ul {
+        height: 0;
+        transition: .5s;
+        overflow: hidden;
+        margin-top: 1.2rem;
+        border-bottom: 1px solid #61ce70;
         li {
           display: flex;
           cursor: pointer;
@@ -90,12 +89,14 @@ const MenuWrapper = styled.div`
             transition: .2s;
             color: inherit;
             text-decoration: inherit;
-            text-transform: uppercase;
-            font-size: 1.6rem;
+            font-size: inherit;
             padding-top: 1.2rem;
             padding-bottom: 1.2rem;
             margin-right: 1rem;
           }
+        }
+        li:first-child .link {
+          padding-top: 0;
         }
       }
     }
@@ -107,20 +108,16 @@ const MenuWrapper = styled.div`
     background: transparent;
   }
   #menuContainer::-webkit-scrollbar-thumb {
-    background-color: white;
+    background-color: ${props => props.theme.green};
     border-radius: 50px;
   }
   @media (hover: hover) {
-    .menuBlock .link:hover {
-      transform: scale(1.05) translateX(5px);
-      position: relative;
-      :after {
-        content: '';
-        position: absolute;
-        bottom: .8rem;
-        left: 0;
-        width: 100%;
-        border-top: 1px solid ${props => props.theme.green};
+    .menuBlock {
+      span:hover {
+        color: ${props => props.theme.green} !important;
+      }
+      .link:hover {
+        color: ${props => props.theme.green} !important;
       }
     }
   }
@@ -150,6 +147,8 @@ function Menu() {
   const [authors, setAuthors] = useState([]);
   const [open, setOpen] = useState(false);
   const {cart} = useContext(UserCont);
+  const [subMenu1, setSubMenu1] = useState(false);
+  const [subMenu2, setSubMenu2] = useState(false);
 
   function openCart() {
     if (!open) {
@@ -160,6 +159,37 @@ function Menu() {
       document.getElementById('mask').removeAttribute('style');
       document.getElementById('cart').removeAttribute('style');
       setOpen(!open);
+    }
+  }
+
+  function openSubMenu(id) {
+    let title = document.getElementById(id).getElementsByTagName('span')[0];
+    let list = document.getElementById(id).getElementsByTagName('ul')[0];
+    if (id === 'subMenu1') {
+      if (!subMenu1) {
+        title.style.color='#61ce70';
+        list.style.borderBottom='1px solid #61ce70';
+        let listItems = list.getElementsByTagName('li');
+        list.style.height=`${41 * listItems.length}px`;
+        setSubMenu1(true);
+      } else {
+        title.removeAttribute('style');
+        list.removeAttribute('style');
+        setSubMenu1(false);
+      }
+    } 
+    if (id === 'subMenu2') {
+      if (!subMenu2) {
+        title.style.color='#61ce70';
+        list.style.borderBottom='1px solid #61ce70';
+        let listItems = list.getElementsByTagName('li');
+        list.style.height=`${41 * listItems.length}px`;
+        setSubMenu2(true);
+      } else {
+        title.removeAttribute('style');
+        list.removeAttribute('style');
+        setSubMenu2(false);
+      }
     }
   }
 
@@ -192,8 +222,8 @@ function Menu() {
             </div>
           </div>
         </div>
-        <div className='menuBlock'>
-          <div className='menuTitle'>
+        <div id='subMenu1' className='menuBlock'>
+          <div onClick={() => openSubMenu('subMenu1')} className='menuTitle'>
             <span>Colecciones</span>
           </div>
           <ul>
@@ -202,8 +232,8 @@ function Menu() {
             )}
           </ul>
         </div>
-        <div className='menuBlock'>
-          <div className='menuTitle'>
+        <div id='subMenu2' className='menuBlock'>
+          <div onClick={() => openSubMenu('subMenu2')} className='menuTitle'>
             <span>Autores</span>
           </div>
           <ul>

@@ -9,21 +9,25 @@ import AuthorView from './views/AuthorView';
 import CollectionView from './views/CollectionView';
 import HomeView from './views/HomeView';
 import ItemView from './views/ItemView';
+import LoginView from './views/LoginView';
+import CheckoutView from './views/CheckoutView';
 
 function App() {
   return (
-    <ThemeContext>
-      <UserContext>
-        <Router>
+    <Router>
+      <ThemeContext>
+        <UserContext>
           <Switch>
-            <Route exact path='/' component={HomeView}/>
+            <Route exact path='/' component={HomeView} />
+            <Route path='/user' component={LoginView} />
+            <Route path='/checkout' component={CheckoutView} />
             <Route path='/collections/:title' component={CollectionView} />
             <Route path='/authors/:author' component={AuthorView} />
             <Route path='/books/:book' component={ItemView} />
           </Switch>
-        </Router>
-      </UserContext>
-    </ThemeContext>
+        </UserContext>
+      </ThemeContext>
+    </Router>
   );
 }
 

@@ -3,6 +3,9 @@ import Nav from './Navbar';
 import Cart from './Cart';
 import Menu from './Menu';
 import Footer from './Footer';
+import Detail from './Detail';
+import { useContext } from 'react';
+import { UserCont } from '../context/UserContext';
 
 const Wrapper = styled.div`
   display: grid;
@@ -27,11 +30,14 @@ const Wrapper = styled.div`
 `;
 
 function PageWrapper({children}) {
+  const {productDetail} = useContext(UserCont);
+  
   return (
-    <Wrapper>
+    <Wrapper onUpdate={window.scrollTo(0, 0)}>
       <Nav />
       <Menu />
       <Cart />
+      <Detail product={productDetail} />
       <div id='pageContent'>
         <div id='mask'></div>
         {children}

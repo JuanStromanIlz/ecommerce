@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { InView } from 'react-intersection-observer';
 import styled from 'styled-components';
 import AddButton from './AddButton';
+import { UserCont } from '../context/UserContext';
 
 const Producto = styled.article`
   opacity: 0;
@@ -19,13 +20,6 @@ const Producto = styled.article`
   }
   .addToCart__mobile {
     width: 100%;
-    box-sizing: border-box;
-    cursor: pointer;
-    background: white;
-    border-radius: 25px;
-    border: 1px solid ${props => props.theme.black};
-    padding: .6rem;
-    font-size: inherit;
     img {
       height: 20px;
     }
@@ -71,9 +65,10 @@ const Producto = styled.article`
       cursor: pointer;
       text-transform: uppercase;
       margin-bottom: .4rem;
+      font-weight: 700;
     }
     .price {
-      font-weight: bold;
+      font-weight: 900;
       margin-top: .6rem;
       margin-bottom: 3rem;
     }
@@ -92,7 +87,7 @@ const Producto = styled.article`
       background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.9));
       span {
         margin: 0 .6rem;
-        font-weight: bold;
+        font-weight: 900;
       }
     }
   }
@@ -108,9 +103,6 @@ const Producto = styled.article`
         visibility: visible;
       }
     }
-    .imageShow:hover {
-      transform: scale(1.1);
-    }
   }
   @media (min-width: 920px) {
     .addToCart__desktop {
@@ -122,9 +114,10 @@ const Producto = styled.article`
   }  
 `;
 
-function Card({info, viewDetail}) {
+function Card({info}) {
   const cardRef = useRef(null);
   const [card, setCard] = useState({});
+  const {viewDetail} = useContext(UserCont);
 
   function setBackground(inView) {
     if (inView) {
@@ -171,9 +164,7 @@ function Card({info, viewDetail}) {
             <span className='author'>{card.author}</span>
           </Link> 
           <span className='price'>${card.price}</span>
-          <button disabled={card.product_quantity === 0} className={`addToCart__mobile ${card.product_quantity === 0 ? 'disableButton' : null}`} onClick={openDetail}>
-            <img src={process.env.PUBLIC_URL + '/icons/bagAdd.svg'} alt='add to bag'></img>
-          </button>
+          <AddButton Class={'addToCart__mobile'} disabled={card.product_quantity} callTo={openDetail} />
         </div>
       </Producto>
     </InView>

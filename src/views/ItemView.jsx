@@ -8,6 +8,7 @@ import Carrousel from '../styled-components/Carrousel';
 
 function ItemView() {
   const [item, setItem] = useState([]);
+  const [relatedItems, setRelatedItems] = useState([]);
   const {book} = useParams();
 
   useEffect(() => {
@@ -18,12 +19,14 @@ function ItemView() {
     document.getElementById('menu').removeAttribute('style');
     let item = db.find(item => item.name === book);
     setItem(item);
+    let related = db.filter(book => book.collection === item.collection && book.name !== item.name);
+    setRelatedItems(related);
   }, [book]);
 
   return (
     <PageWrapper>
       <ItemDetail item={item} />
-      <Carrousel items={db}/>
+      <Carrousel items={relatedItems} />
       <Detail product={item} />
     </PageWrapper>
   );
